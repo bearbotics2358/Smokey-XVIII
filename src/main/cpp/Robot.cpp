@@ -132,13 +132,26 @@ void Robot::RobotPeriodic() {
     if(!frc::DriverStation::IsDSAttached()){
          a_LED.SetNoComms();
     }
-    else if((a_NoteHandler.beamBroken()) || (a_Gamepad.GetRawButton(4))){
+    else if(a_Gamepad.GetRawButton(12)){
+        a_LED.SetElevatorL1();
+       
+     } 
+    else if((a_NoteHandler.beamBroken()) || (a_Gamepad.GetRawButton(11))){
          a_LED.SetAlgaeHeld();
          }  
-    else if(a_Gamepad.GetRawButton(3)){
+    else if(a_Gamepad.GetRawButton(10)){
+        a_LED.SetElevatorL2();
+       
+     } 
+    else if(a_Gamepad.GetRawButton(9)){
         a_LED.SetElevatorL3();
        
-     } else {
+     } 
+     else if(a_Gamepad.GetRawButton(8)){
+        a_LED.SetIDK();
+       
+     } 
+     else {
          a_LED.SetMSGIdle();
      }
 
