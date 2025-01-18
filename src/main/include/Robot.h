@@ -56,7 +56,8 @@ class Robot : public frc::TimedRobot {
         void TestPeriodic();
 
         //void SetTargetType(LED_STAGE_enum target);
-
+        int currentButton;
+        int counterButton;
 
 
     private:
@@ -102,6 +103,8 @@ class Robot : public frc::TimedRobot {
         //LED_DIO a_LED;
 
         LED a_LED;
+        bool buttonToggled = false;      // Tracks the toggle state (LED command on/off)
+        bool previousButtonState = false; // Tracks the previous state of the button
 
 
         bool commsStatus;

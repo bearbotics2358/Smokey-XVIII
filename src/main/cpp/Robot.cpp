@@ -129,36 +129,96 @@ void Robot::RobotPeriodic() {
    
 
 
-    if(!frc::DriverStation::IsDSAttached()){
-         a_LED.SetNoComms();
+ 
+static bool buttonToggled = false; // Tracks whether the LED command is active or idle
+static bool previousButtonState = false; // Tracks the previous state of the button
+
+if (!frc::DriverStation::IsDSAttached()) {
+    a_LED.SetNoComms(); // If no driver station is attached, set NoComms mode
+} 
+else {
+    // Get the current state of the button 
+    bool currentButtonState = a_Gamepad.GetRawButton(12);
+
+  
+    if (currentButtonState && !previousButtonState) {
+        // Toggle the LED state
+        buttonToggled = !buttonToggled;
     }
-    else if(a_Gamepad.GetRawButton(12)){
-        a_LED.SetElevatorL1();
-       
-     } 
-    else if((a_NoteHandler.beamBroken()) || (a_Gamepad.GetRawButton(11))){
-         a_LED.SetAlgaeHeld();
-         }  
-    else if(a_Gamepad.GetRawButton(10)){
+
+    // Update the previous button state for the next loop iteration
+    previousButtonState = currentButtonState;
+
+    // Use the toggled state to determine the LED behavior
+    if (buttonToggled) {
+        a_LED.SetElevatorL1(); 
+    } else if (a_NoteHandler.beamBroken() || a_Gamepad.GetRawButton(11)) {
+        a_LED.SetAlgaeHeld(); 
+    } else if (a_Gamepad.GetRawButton(10)) {
         a_LED.SetElevatorL2();
-       
-     } 
-    else if(a_Gamepad.GetRawButton(9)){
+    } else if (a_Gamepad.GetRawButton(9)) {
         a_LED.SetElevatorL3();
-       
-     } 
-     else if(a_Gamepad.GetRawButton(8)){
+    } else if (a_Gamepad.GetRawButton(8)) {
         a_LED.SetIDK();
-       
-     } 
-     else {
-         a_LED.SetMSGIdle();
-     }
+    } else {
+        a_LED.SetMSGIdle(); // Default to idle state
+    }
+
+}
 
 
     a_NoteHandler.updateDashboard();
-
-
+    int counterButton = 0;
+    if (currentButton == 12){
+        counterButton ++;
+        if (counterButton % 2){
+            a_LED.SetMSGIdle();
+            counterButton = 0;
+        }
+        else{
+            a_LED.SetElevatorL1();
+        }
+    }
+    else if (currentButton == 11){
+        counterButton ++;
+        if (counterButton % 2){
+            a_LED.SetMSGIdle();
+            counterButton = 0;
+        }
+        else{
+            a_LED.SetAlgaeHeld();
+        }
+    }
+    else if (currentButton == 10){
+        counterButton ++;
+        if (counterButton % 2){
+            a_LED.SetMSGIdle();
+            counterButton = 0;
+        }
+        else{
+            a_LED.SetElevatorL2();
+        }
+    }
+        else if (currentButton == 9){
+        counterButton ++;
+        if (counterButton % 2){
+            a_LED.SetMSGIdle();
+            counterButton = 0;
+        }
+        else{
+            a_LED.SetElevatorL3();
+        }
+    }
+    else if (currentButton == 8){
+        counterButton ++;
+        if (counterButton % 2){
+            a_LED.SetMSGIdle();
+            counterButton = 0;
+        }
+        else{
+            a_LED.SetIDK();
+        }
+    }
     // photon::PhotonPipelineResult result = a_camera.GetLatestResult();
     // double Note_Offset = LimelightHelpers::getTX("limelight-notes");
 
