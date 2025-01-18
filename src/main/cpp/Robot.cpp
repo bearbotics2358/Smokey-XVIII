@@ -152,12 +152,11 @@ else {
     // Use the toggled state to determine the LED behavior
     if (buttonToggled) {
         a_LED.SetElevatorL1(); 
-    } else if (a_NoteHandler.beamBroken() || a_Gamepad.GetRawButton(11)) {
+    } else if (/*a_NoteHandler.beamBroken() ||*/ a_Gamepad.GetRawButton(11)) {
         a_LED.SetAlgaeHeld(); 
     } else if (a_Gamepad.GetRawButton(10)) {
         a_LED.SetElevatorL2();
     } else if (a_Gamepad.GetRawButton(9)) {
-   
         a_LED.SetElevatorL3();
     } else if (a_Gamepad.GetRawButton(8)) {
         a_LED.SetIDK();
