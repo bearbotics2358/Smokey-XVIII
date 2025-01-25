@@ -163,6 +163,9 @@ void LED::Update()
             SendIDKMSG();
             break;  
 
+         case RIO_msgs_enum::GOTOMCDONALDS:
+            SendGoToMcDonaldsMSG();
+            break;  
 
         default:
             break;
@@ -370,4 +373,12 @@ void LED::SendIDKMSG() {
 
 }
 
-
+void LED::SetGoToMcDonalds(){
+    LED_currentCommand = RIO_msgs_enum::GOTOMCDONALDS;
+}
+void LED::SendGoToMcDonaldsMSG(){
+    char cmd[10];
+    strncpy(cmd, "8,0\r\n", 8);
+    m_pserial->Write(cmd, strlen(cmd));
+    m_pserial->Flush();    
+}

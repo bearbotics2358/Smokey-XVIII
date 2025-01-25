@@ -11,4 +11,5 @@ enum RIO_msgs_enum {
   ELEVATOR_L2 = 5,
   ELEVATOR_L3 = 6,
   IDK = 7,
+  GOTOMCDONALDS = 8,
 };

@@ -49,6 +49,7 @@ public:
     void SetElevatorL3();
     void SetIDK();
     void ProcessReport();
+    void SetGoToMcDonalds();
     //enum LED_STAGE_enum GetTargetRangeIndicator();
     //void SetTargetType(LED_STAGE_enum target_type_param);
     //LED_STAGE_enum GetTargetType();
@@ -71,6 +72,7 @@ private:
     void SendElevatorL2MSG();
     void SendElevatorL3MSG();
     void SendIDKMSG();
+    void SendGoToMcDonaldsMSG();
 } ;
 
 
