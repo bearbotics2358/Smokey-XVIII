@@ -161,7 +161,7 @@ if (!frc::DriverStation::IsDSAttached()) {
         a_LED.SetIDK();
 
      } 
-     else if(a_Gamepad.GetRawButton(12) and (a_Gamepad.GetRawButton(11)) and (a_Gamepad.GetRawButton(10)) and (a_Gamepad.GetRawButton(9)) and (a_Gamepad.GetRawButton(8))){
+     else if(a_Gamepad.GetRawButton(12)&&(a_Gamepad.GetRawButton(11))&&(a_Gamepad.GetRawButton(10))&&(a_Gamepad.GetRawButton(9))&&(a_Gamepad.GetRawButton(8))){
 
         a_LED.SetGoToMcDonalds();
 
